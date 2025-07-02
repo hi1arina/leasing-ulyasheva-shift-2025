@@ -1,7 +1,6 @@
 package com.example.leasing.cars_catalog.data.model
 
 import com.example.leasing.cars_catalog.domain.entity.BodyType
-import com.example.leasing.cars_catalog.domain.entity.Brand
 import com.example.leasing.cars_catalog.domain.entity.Color
 import com.example.leasing.cars_catalog.domain.entity.Steering
 import com.example.leasing.cars_catalog.domain.entity.Transmission
@@ -9,7 +8,7 @@ import com.example.leasing.cars_catalog.domain.entity.Transmission
 data class CarModel(
     val id: String,
     val name: String,
-    val brand: Brand,
+    val brand: String,
     val media: List<MediaModel>,
     val transmission: Transmission,
     val price: Int,
