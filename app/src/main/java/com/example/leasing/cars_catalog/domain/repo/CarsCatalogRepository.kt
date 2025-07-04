@@ -6,7 +6,7 @@ import com.example.leasing.cars_catalog.domain.entity.CarsResponse
 import com.example.leasing.cars_catalog.domain.entity.Color
 import com.example.leasing.cars_catalog.domain.entity.Transmission
 
-interface CarsCatalogRepo {
+interface CarsCatalogRepository {
     suspend fun getCarsCatalog(
         search: String? = null,
         minPrice: Int? = null,
