@@ -1,6 +1,5 @@
 package com.example.leasing.cars_catalog.data.repo
 
-import android.util.Log
 import com.example.leasing.cars_catalog.data.CarsCatalogAPI
 import com.example.leasing.cars_catalog.data.converter.CarsResponseConverter
 import com.example.leasing.cars_catalog.domain.entity.BodyType
@@ -59,8 +58,6 @@ class CarsCatalogRepositoryImpl() : CarsCatalogRepository {
             page = page,
             limit = limit
         )
-
-        Log.d("API response: ","$carsCatalogResponse")
 
         return CarsResponseConverter.convert(carsCatalogResponse)
     }
