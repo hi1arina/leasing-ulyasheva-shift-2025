@@ -8,13 +8,13 @@ import com.example.leasing.cars_catalog.domain.entity.Brand
 import com.example.leasing.cars_catalog.domain.entity.CarsResponse
 import com.example.leasing.cars_catalog.domain.entity.Color
 import com.example.leasing.cars_catalog.domain.entity.Transmission
-import com.example.leasing.cars_catalog.domain.repo.CarsCatalogRepo
+import com.example.leasing.cars_catalog.domain.repo.CarsCatalogRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class CarsCatalogRepoImpl() : CarsCatalogRepo {
+class CarsCatalogRepositoryImpl() : CarsCatalogRepository {
 
     companion object {
         private const val BASE_URL = "https://shift-intensive.ru"
