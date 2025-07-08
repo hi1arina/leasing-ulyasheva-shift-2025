@@ -13,7 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.lifecycleScope
-import com.example.leasing.cars_catalog.data.repo.CarsCatalogRepoImpl
+import com.example.leasing.cars_catalog.data.repo.CarsCatalogRepositoryImpl
 import com.example.leasing.ui.theme.LeasingTheme
 import kotlinx.coroutines.launch
 
@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-        val repo = CarsCatalogRepoImpl()
+        val repo = CarsCatalogRepositoryImpl()
 
         lifecycleScope.launch {
             val carsResponse = repo.getCarsCatalog()
