@@ -61,4 +61,5 @@ dependencies {
     implementation(libs.okhttp.logging)
     implementation(libs.lifecycle.viewmodel)
     implementation(libs.androidx.runtime.livedata)
+    implementation(libs.coil.compose)
 }
