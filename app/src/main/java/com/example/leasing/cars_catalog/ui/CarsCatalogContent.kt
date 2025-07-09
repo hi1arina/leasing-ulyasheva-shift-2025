@@ -32,7 +32,7 @@ import com.example.leasing.cars_catalog.presentation.CarsCatalogState
 @Composable
 fun CarsCatalogContent(state: CarsCatalogState.Content) {
 
-    Content()
+    CarsCatalogContent()
     CarsCatalogList(state.cars)
 
 }
@@ -50,7 +50,7 @@ fun CarsCatalogList(cars: List<Car> = emptyList()) {
 }
 
 @Composable
-fun Content() {
+fun CarsCatalogContent() {
     Column {
         Spacer(modifier = Modifier.height(12.dp))
 
@@ -116,7 +116,6 @@ fun CarItem(car: Car) {
             contentDescription = null,
             modifier = Modifier
                 .width(152.dp)
-                .height(116.dp)
                 .clip(RoundedCornerShape(16.dp)),
             contentScale = ContentScale.Fit
         )
