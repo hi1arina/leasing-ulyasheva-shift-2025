@@ -59,4 +59,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
     implementation(libs.okhttp.logging)
+    implementation(libs.lifecycle.viewmodel)
+    implementation(libs.androidx.runtime.livedata)
+    implementation(libs.coil.compose)
 }
