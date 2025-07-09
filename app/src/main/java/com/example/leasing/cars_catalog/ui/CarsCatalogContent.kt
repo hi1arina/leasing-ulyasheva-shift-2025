@@ -28,12 +28,18 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.leasing.cars_catalog.domain.entity.Car
 import com.example.leasing.cars_catalog.presentation.CarsCatalogState
+import com.example.leasing.cars_catalog.presentation.SearchState
 
 @Composable
-fun CarsCatalogContent(state: CarsCatalogState.Content) {
+fun CarsCatalogContent(state: CarsCatalogState.Content, onSearchValueChange: (String) -> Unit) {
 
-    CarsCatalogContent()
-    CarsCatalogList(state.cars)
+    CatalogContent(
+        searchValue = state.searchState.search, onSearchValueChange = onSearchValueChange
+    )
+    when (val searchState = state.searchState) {
+        is SearchState.Found -> CarsCatalogList(searchState.cars)
+        is SearchState.NotFound -> {}
+    }
 
 }
 
@@ -50,7 +56,9 @@ fun CarsCatalogList(cars: List<Car> = emptyList()) {
 }
 
 @Composable
-fun CarsCatalogContent() {
+fun CatalogContent(
+    searchValue: String, onSearchValueChange: (String) -> Unit
+) {
     Column {
         Spacer(modifier = Modifier.height(12.dp))
 
@@ -64,8 +72,8 @@ fun CarsCatalogContent() {
 
         Text(text = "Поиск", style = MaterialTheme.typography.bodyMedium)
         OutlinedTextField(
-            value = "",
-            onValueChange = {},
+            value = searchValue,
+            onValueChange = onSearchValueChange,
             modifier = Modifier.fillMaxWidth(),
             placeholder = { Text("Поиск") },
             shape = RoundedCornerShape(8.dp),
