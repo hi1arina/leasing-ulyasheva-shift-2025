@@ -10,7 +10,7 @@ import com.example.leasing.cars_catalog.domain.entity.Transmission
 
 object CarConverter {
 
-    private fun mapBrand(brand: String): Brand = when (brand.trim()) {
+    fun mapBrand(brand: String): Brand = when (brand.trim()) {
         "Haval" -> Brand.HAVAL
         "Hyundai" -> Brand.HYUNDAI
         "Volkswagen" -> Brand.VOLKSWAGEN
@@ -23,12 +23,12 @@ object CarConverter {
         else -> Brand.INVALID
     }
 
-    private fun mapTransmission(transmission: String): Transmission = when (transmission.trim()) {
+    fun mapTransmission(transmission: String): Transmission = when (transmission.trim()) {
         "automatic" -> Transmission.AUTOMATIC
         else -> Transmission.MANUAL
     }
 
-    private fun mapBodyType(bodyType: String): BodyType = when (bodyType.trim()) {
+    fun mapBodyType(bodyType: String): BodyType = when (bodyType.trim()) {
         "sedan" -> BodyType.SEDAN
         "suv" -> BodyType.SUV
         "coupe" -> BodyType.COUPE
@@ -36,12 +36,12 @@ object CarConverter {
         else -> BodyType.CABRIOLET
     }
 
-    private fun mapSteering(steering: String): Steering = when (steering.trim()) {
+    fun mapSteering(steering: String): Steering = when (steering.trim()) {
         "left" -> Steering.LEFT
         else -> Steering.RIGHT
     }
 
-    private fun mapColor(color: String): Color = when (color.trim()) {
+    fun mapColor(color: String): Color = when (color.trim()) {
         "black" -> Color.BLACK
         "white" -> Color.WHITE
         "red" -> Color.RED
