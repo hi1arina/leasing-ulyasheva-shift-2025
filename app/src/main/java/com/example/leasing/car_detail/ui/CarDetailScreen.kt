@@ -15,13 +15,14 @@ import com.example.leasing.car_detail.presentation.CarDetailViewModel
 @Composable
 fun CarDetailScreen(
     carId: String,
-    viewModel: CarDetailViewModel,
-    modifier: Modifier = Modifier
+    carDetailViewModel: CarDetailViewModel,
+    modifier: Modifier = Modifier,
+    onBackClick: () -> Unit
 ) {
-    val state by viewModel.state.observeAsState(CarDetailState.Initial)
+    val state by carDetailViewModel.state.observeAsState(CarDetailState.Initial)
 
     LaunchedEffect(Unit) {
-        viewModel.loadCarDetail(carId)
+        carDetailViewModel.loadCarDetail(carId)
     }
 
     Column(
@@ -32,7 +33,7 @@ fun CarDetailScreen(
         when (val currentState = state) {
             is CarDetailState.Initial -> {}
             is CarDetailState.Loading -> {}
-            is CarDetailState.Content -> CarDetailContent(car = currentState.car)
+            is CarDetailState.Content -> CarDetailContent(car = currentState.car, onBackClick = onBackClick)
         }
     }
 }
