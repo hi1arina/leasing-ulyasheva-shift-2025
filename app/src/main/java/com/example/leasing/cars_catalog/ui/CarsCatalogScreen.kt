@@ -32,7 +32,9 @@ fun CarsCatalogScreen(
 
             is CarsCatalogState.Loading -> {}
 
-            is CarsCatalogState.Content -> CarsCatalogContent(state = currentState)
+            is CarsCatalogState.Content -> CarsCatalogContent(
+                state = currentState,
+                onSearchValueChange = { carsCatalogViewModel.searchCars(it) })
         }
     }
 }

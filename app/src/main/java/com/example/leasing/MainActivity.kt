@@ -10,6 +10,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import com.example.leasing.cars_catalog.data.repo.CarsCatalogRepositoryImpl
 import com.example.leasing.cars_catalog.domain.usecase.GetCarsCatalogUseCase
+import com.example.leasing.cars_catalog.domain.usecase.GetFilteredCarsUseCase
 import com.example.leasing.cars_catalog.presentation.CarsCatalogViewModel
 import com.example.leasing.cars_catalog.ui.CarsCatalogScreen
 import com.example.leasing.ui.theme.LeasingTheme
@@ -23,8 +24,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         val repository = CarsCatalogRepositoryImpl()
-        val useCase = GetCarsCatalogUseCase(repository)
-        viewModel = CarsCatalogViewModel(useCase)
+        val getCarsCatalogUseCase = GetCarsCatalogUseCase(repository)
+        val getFilteredCarsUseCase = GetFilteredCarsUseCase()
+        viewModel = CarsCatalogViewModel(getCarsCatalogUseCase, getFilteredCarsUseCase)
 
         setContent {
             LeasingTheme {
