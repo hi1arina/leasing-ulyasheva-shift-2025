@@ -36,12 +36,11 @@ class CarsCatalogViewModel(
     fun searchCars(search: String) {
         val currentState = _state.value as? CarsCatalogState.Content ?: return
         val filteredCars = getFilteredCarsUseCase(search, currentState.cars)
-        _state.value = currentState.copy(
-            searchState = if (filteredCars.isEmpty()) {
-                SearchState.NotFound(search)
-            } else {
-                SearchState.Found(search, filteredCars)
-            }
-        )
+        val newSearchState = if (filteredCars.isEmpty()) {
+            SearchState.NotFound(search)
+        } else {
+            SearchState.Found(search, filteredCars)
+        }
+        _state.value = currentState.copy(searchState = newSearchState)
     }
 }
