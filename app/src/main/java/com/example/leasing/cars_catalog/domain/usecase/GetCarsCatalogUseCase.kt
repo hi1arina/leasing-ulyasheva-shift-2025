@@ -10,7 +10,7 @@ import com.example.leasing.cars_catalog.domain.repo.CarsCatalogRepository
 class GetCarsCatalogUseCase(
     private val repository: CarsCatalogRepository
 ) {
-    suspend fun invoke(
+    suspend operator fun invoke(
         search: String?,
         minPrice: Int?,
         maxPrice: Int?,
@@ -20,16 +20,15 @@ class GetCarsCatalogUseCase(
         color: Color?,
         page: Int,
         limit: Int
-    ): CarsResponse =
-        repository.getCarsCatalog(
-            search = search,
-            minPrice = minPrice,
-            maxPrice = maxPrice,
-            transmission = transmission,
-            bodyType = bodyType,
-            brand = brand,
-            color = color,
-            page = page,
-            limit = limit
-        )
+    ): CarsResponse = repository.getCarsCatalog(
+        search = search,
+        minPrice = minPrice,
+        maxPrice = maxPrice,
+        transmission = transmission,
+        bodyType = bodyType,
+        brand = brand,
+        color = color,
+        page = page,
+        limit = limit
+    )
 }
