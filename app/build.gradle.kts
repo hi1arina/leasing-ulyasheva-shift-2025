@@ -62,4 +62,5 @@ dependencies {
     implementation(libs.lifecycle.viewmodel)
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.coil.compose)
+    implementation(libs.androidx.navigation.compose)
 }

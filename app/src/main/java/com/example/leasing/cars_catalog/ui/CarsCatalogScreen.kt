@@ -14,7 +14,7 @@ import com.example.leasing.cars_catalog.presentation.CarsCatalogViewModel
 
 @Composable
 fun CarsCatalogScreen(
-    carsCatalogViewModel: CarsCatalogViewModel, modifier: Modifier = Modifier
+    carsCatalogViewModel: CarsCatalogViewModel, modifier: Modifier = Modifier, onCarClick: (String) -> Unit
 ) {
     val state by carsCatalogViewModel.state.observeAsState(CarsCatalogState.Initial)
 
@@ -33,7 +33,7 @@ fun CarsCatalogScreen(
             is CarsCatalogState.Loading -> {}
 
             is CarsCatalogState.Content -> CarsCatalogContent(
-                state = currentState, onSearchValueChange = carsCatalogViewModel::searchCars
+                state = currentState, onSearchValueChange = carsCatalogViewModel::searchCars, onCarClick = onCarClick
             )
         }
     }

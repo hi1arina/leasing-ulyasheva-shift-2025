@@ -1,5 +1,6 @@
 package com.example.leasing.cars_catalog.ui
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -31,26 +32,26 @@ import com.example.leasing.cars_catalog.presentation.CarsCatalogState
 import com.example.leasing.cars_catalog.presentation.SearchState
 
 @Composable
-fun CarsCatalogContent(state: CarsCatalogState.Content, onSearchValueChange: (String) -> Unit) {
+fun CarsCatalogContent(state: CarsCatalogState.Content, onSearchValueChange: (String) -> Unit, onCarClick: (String) -> Unit) {
 
     CatalogContent(
         searchValue = state.searchState.search, onSearchValueChange = onSearchValueChange
     )
     when (val searchState = state.searchState) {
-        is SearchState.Found -> CarsCatalogList(searchState.cars)
+        is SearchState.Found -> CarsCatalogList(searchState.cars, onCarClick = onCarClick)
         is SearchState.NotFound -> {}
     }
 
 }
 
 @Composable
-fun CarsCatalogList(cars: List<Car> = emptyList()) {
+fun CarsCatalogList(cars: List<Car> = emptyList(), onCarClick: (String) -> Unit) {
 
     LazyColumn(
         modifier = Modifier.fillMaxHeight(), verticalArrangement = Arrangement.spacedBy(24.dp)
     ) {
         items(cars) { car ->
-            CarItem(car = car)
+            CarItem(car = car, onClick = { onCarClick(car.id) })
         }
     }
 }
@@ -112,11 +113,12 @@ fun CatalogContent(
 const val BASE_IMAGE_URL = "https://shift-intensive.ru/api"
 
 @Composable
-fun CarItem(car: Car) {
+fun CarItem(car: Car, onClick: () -> Unit) {
     Row(
         modifier = Modifier
             .height(116.dp)
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = 16.dp)
+            .clickable(onClick = onClick),
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         AsyncImage(
